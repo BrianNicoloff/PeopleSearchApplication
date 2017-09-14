@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearchApplication", "PeopleSearchApplication\PeopleSearchApplication.csproj", "{D24D6CC8-2A3C-4C2A-8813-C28E868A122A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A411ABDD-5B24-4B32-96D2-D923335E24C9} = {A411ABDD-5B24-4B32-96D2-D923335E24C9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "websrc", "websrc\websrc.csproj", "{A411ABDD-5B24-4B32-96D2-D923335E24C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{D24D6CC8-2A3C-4C2A-8813-C28E868A122A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D24D6CC8-2A3C-4C2A-8813-C28E868A122A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D24D6CC8-2A3C-4C2A-8813-C28E868A122A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A411ABDD-5B24-4B32-96D2-D923335E24C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A411ABDD-5B24-4B32-96D2-D923335E24C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A411ABDD-5B24-4B32-96D2-D923335E24C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A411ABDD-5B24-4B32-96D2-D923335E24C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
