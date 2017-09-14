@@ -1,6 +1,6 @@
-'''People Search Application'''
+## People Search Application
 
-Prerequisites:
+### Prerequisites:
 
 - Node 6.11.1
 - NPM 3+
