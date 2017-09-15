@@ -1,7 +1,53 @@
-ul {
-    li {
-        .person-record {
-            background-color: darkslategrey;
+.search {
+    padding: 1em 1.5em;
+    .text-container {
+
+        input[type=text] {
+            padding: .5em;
+            box-sizing: border-box;
+            min-width: 200px;
+            width: 35%;
         }
     }
+}
+
+.results {
+    padding: 1em 1.5em;
+    display: flex;
+    flex-direction: column; 
+    font-family: sans-serif;
+    .row{
+        .person-record{
+            display: flex;
+            flex-direction: row;
+            img {
+                border-radius: 8px;
+                height: 150px;
+                min-width: 120px;
+                max-width: 120px;
+                min-height: 150px;
+                max-height:150px;
+                align-self: auto;
+            }
+            .info{
+                padding: .3em .5em;
+                div{
+                    padding-bottom: .5em;
+                    font-size: smaller;
+                    &.name{
+                        font-weight: bold;                   
+                        font-style: normal;
+                        font-size: larger; 
+                    }                 
+                    label {
+                        margin-right: .3em;
+                    }   
+                }
+            }
+        }
+        hr{
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+    }    
 }

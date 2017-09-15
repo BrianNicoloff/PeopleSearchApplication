@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+$headerColor: #39f; 
+$white: #fff;
+
+body {
+    margin: 0em;
+    padding: 0em;
+}
+
+header {
+    background-color: $headerColor;
+    h1 {
+        font-size: 2em;
+        font-family: sans-serif;
+        margin: 0em;
+        padding: .2em;
+        padding-left: .7em;
+        color: $white;
+    }
+}
+
