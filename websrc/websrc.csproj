@@ -71,7 +71,7 @@
     <Content Include=".gitignore" />
     <Content Include="karma.conf.js" />
     <Content Include="packages.config" />
-    <Content Include="protractor.conf.js" />
+    <Content Include="src\app\directory\directory.component.html" />
     <Content Include="src\assets\.gitkeep" />
     <Content Include="src\tsconfig.app.json" />
     <Content Include="src\tsconfig.spec.json" />
@@ -83,6 +83,8 @@
     <Content Include="tsconfig.json" />
     <Content Include="tslint.json" />
     <Content Include="transform-and-move-index.js" />
+    <Content Include="src\app\directory\directory.component.scss" />
+    <Content Include="src\app\app.component.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -91,11 +93,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
-    <Content Include="src\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -103,9 +103,15 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app\app-routing.module.ts" />
-    <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\core\core.module.ts" />
+    <TypeScriptCompile Include="src\app\core\http\http.service.ts" />
+    <TypeScriptCompile Include="src\app\directory\directory.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\directory\directory.component.ts" />
+    <TypeScriptCompile Include="src\app\directory\person.ts" />
+    <TypeScriptCompile Include="src\app\shared\ensure-module-loaded-once.guard.ts" />
+    <TypeScriptCompile Include="src\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="src\environments\environment.ts" />
     <TypeScriptCompile Include="src\main.ts" />
