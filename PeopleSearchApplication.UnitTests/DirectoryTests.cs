@@ -1,0 +1,67 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using Autofac;
+using Moq;
+using NUnit.Framework;
+using PeopleSearchApplication.Controllers.API.Directory;
+using PeopleSearchApplication.Data;
+
+namespace PeopleSearchApplication.UnitTests
+{
+
+    [TestFixture]
+    public class DirectoryTests
+    {
+        private IContainer _container;
+        private DirectoryController _testObject;
+        private Mock<IDirectoryRepository> _directoryRepository;
+
+        [SetUp]
+        public void Setup()
+        {
+            _directoryRepository = new Mock<IDirectoryRepository>();
+
+            var builder = new ContainerBuilder();
+            Dependencies.Resolve(builder);
+            builder.RegisterInstance(_directoryRepository.Object);
+            _container = builder.Build();
+
+            _testObject = _container.Resolve<DirectoryController>();
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            _container.Dispose();
+        }
+
+        [Test]
+        public void Get_ShouldGetListOfPeopleFromTheDatabase()
+        {
+            var skip = 0;
+            var people = new List<Data.Person>
+            {
+                new Data.Person
+                {
+                    Name = "Marmaduke Nukum",
+                    Age = 22,
+                    Phone = 1231230123,
+                    Interests = "Long walks through the park",
+                    ImagePath = "urltoimage.jpg"
+                }
+            };
+            _directoryRepository.Setup(r => r.GetPeople(skip)).Returns(people);
+
+            var results = _testObject.Get(skip);
+            var firstPerson = results.First();
+
+            Assert.That(results.Count(), Is.EqualTo(1));
+            Assert.That(firstPerson.Name, Is.EqualTo("Marmaduke Nukum"));
+            Assert.That(firstPerson.Age, Is.EqualTo(22));
+            Assert.That(firstPerson.Phone, Is.EqualTo(1231230123));
+            Assert.That(firstPerson.Interests, Is.EqualTo("Long walks through the park"));
+            Assert.That(firstPerson.ImagePath, Is.EqualTo("urltoimage.jpg"));
+        }
+    }
+
+}

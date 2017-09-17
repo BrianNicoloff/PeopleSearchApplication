@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Autofac;
+using Autofac.Integration.WebApi;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -11,12 +13,11 @@ namespace PeopleSearchApplication
     {
         public static void Register(HttpConfiguration config)
         {
-//            XmlConfigurator.Configure();
-//            var builder = new ContainerBuilder();
-//
-//            Dependencies.Resolve(builder);
-//            builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
-//            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(builder.Build());
+            var builder = new ContainerBuilder();
+
+            Dependencies.Resolve(builder);
+            builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(builder.Build());
 
             FormatJson(config);
             config.MapHttpAttributeRoutes();

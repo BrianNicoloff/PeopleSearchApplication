@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearchApplication", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "websrc", "websrc\websrc.csproj", "{A411ABDD-5B24-4B32-96D2-D923335E24C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearchApplication.UnitTests", "PeopleSearchApplication.UnitTests\PeopleSearchApplication.UnitTests.csproj", "{820B8818-6DFB-44F2-9595-607B3C074129}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9B37A64B-C730-4B90-AE81-0A4A9823C4BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,8 +28,15 @@ Global
 		{A411ABDD-5B24-4B32-96D2-D923335E24C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A411ABDD-5B24-4B32-96D2-D923335E24C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A411ABDD-5B24-4B32-96D2-D923335E24C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{820B8818-6DFB-44F2-9595-607B3C074129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{820B8818-6DFB-44F2-9595-607B3C074129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{820B8818-6DFB-44F2-9595-607B3C074129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{820B8818-6DFB-44F2-9595-607B3C074129}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{820B8818-6DFB-44F2-9595-607B3C074129} = {9B37A64B-C730-4B90-AE81-0A4A9823C4BC}
 	EndGlobalSection
 EndGlobal
