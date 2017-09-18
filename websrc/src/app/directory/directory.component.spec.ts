@@ -30,7 +30,7 @@ describe('DirectoryComponent', () => {
                 }
             ];
             mockHttp.get
-                .withArgs('/api/directory?skip=0')
+                .withArgs('/api/directory')
                 .returns(Observable.of(people));
             
             let originalPeople = testObject.people;
@@ -50,7 +50,7 @@ describe('DirectoryComponent', () => {
 
         it('handles no results', () => {
             mockHttp.get
-                .withArgs('/api/directory?skip=0')
+                .withArgs('/api/directory')
                 .returns(Observable.of([]));
                         
             testObject.ngOnInit();
@@ -70,7 +70,7 @@ describe('DirectoryComponent', () => {
             ];
 
             mockHttp.get
-                .withArgs('/api/directory?skip=0')
+                .withArgs('/api/directory')
                 .returns(Observable.of(people).delay(500));
  
             testObject.ngOnInit();
@@ -131,5 +131,58 @@ describe('DirectoryComponent', () => {
                 done();
             }, 1000);
         });
+    });
+
+    describe('scrolled', () => {
+
+        it('should load the next set of records', () => {
+            testObject.searchText = 'foo';
+            testObject.people = [new Person(), new Person(), new Person()];
+
+            let people: Array<Person> = [
+                {
+                    name: 'foo lincoln',
+                    age: 160,
+                    phone: '186 - 418 - 6418',
+                    interests: 'politics',
+                    imagePath: '/images/abe.jpg'
+                }
+            ];
+
+            mockHttp.get
+                .withArgs('/api/directory/search?text=foo&skip=3')
+                .returns(Observable.of(people));
+
+            testObject.onScroll();
+
+            expect(testObject.people.length).toBe(4);
+
+            expect(testObject.people[3].name).toBe('foo lincoln');
+        });
+
+        it('should load next results when search is undefined', () => {
+            testObject.people = [new Person(), new Person(), new Person()];
+            
+            let people: Array<Person> = [
+                {
+                    name: 'foo lincoln',
+                    age: 160,
+                    phone: '186 - 418 - 6418',
+                    interests: 'politics',
+                    imagePath: '/images/abe.jpg'
+                }
+            ];
+
+            mockHttp.get
+                .withArgs('/api/directory/search?text=&skip=3')
+                .returns(Observable.of(people));
+
+            testObject.onScroll();
+
+            expect(testObject.people.length).toBe(4);
+
+            expect(testObject.people[3].name).toBe('foo lincoln');
+        });
+
     });
 });

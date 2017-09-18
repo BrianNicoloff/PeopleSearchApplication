@@ -16,13 +16,21 @@ export class DirectoryComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.loadResults('/api/directory?skip=0');
+    this.loadResults('/api/directory');
   }
   
   searchTextChanged(text: string) {
     this.searchText = text;
     this.people = [];
     this.loadResults('/api/directory/search?text=' + text + '&skip=0');
+  }
+
+  onScroll() {
+    if (this.searchText) {
+      this.loadResults('/api/directory/search?text=' + this.searchText + '&skip=' + this.people.length);    
+    } else {
+       this.loadResults('/api/directory/search?text=&skip=' + this.people.length);
+    }
   }
 
   private loadResults(path: string) {

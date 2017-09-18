@@ -38,7 +38,6 @@ namespace PeopleSearchApplication.UnitTests
         [Test]
         public void Get_ShouldGetListOfPeopleFromTheDatabase()
         {
-            var skip = 0;
             var people = new List<Data.Person>
             {
                 new Data.Person
@@ -51,9 +50,9 @@ namespace PeopleSearchApplication.UnitTests
                     ImagePath = "urltoimage.jpg"
                 }
             };
-            _directoryRepository.Setup(r => r.GetPeople(skip)).Returns(people);
+            _directoryRepository.Setup(r => r.GetPeople(0)).Returns(people);
 
-            var results = _testObject.Get(skip);
+            var results = _testObject.Get();
             var firstPerson = results.First();
 
             Assert.That(results.Count(), Is.EqualTo(1));

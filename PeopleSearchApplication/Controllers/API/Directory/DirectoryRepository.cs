@@ -13,6 +13,7 @@ namespace PeopleSearchApplication.Controllers.API.Directory
     public class DirectoryRepository : IDirectoryRepository
     {
         private readonly PeopleSearchContext _context;
+        private const int Take = 25;
 
         public DirectoryRepository(PeopleSearchContext context)
         {
@@ -23,6 +24,8 @@ namespace PeopleSearchApplication.Controllers.API.Directory
         {
             return _context.People
                     .OrderBy(p => p.Name)
+                    .Skip(skip)
+                    .Take(Take)
                     .ToList();
         }
 
@@ -34,6 +37,8 @@ namespace PeopleSearchApplication.Controllers.API.Directory
             return _context.People
                 .Where(p => p.Name.Contains(searchText))
                 .OrderBy(p => p.Name)
+                .Skip(skip)
+                .Take(Take)
                 .ToList();
         }
     }

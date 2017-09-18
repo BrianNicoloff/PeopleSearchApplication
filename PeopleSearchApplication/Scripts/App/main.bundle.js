@@ -120,17 +120,19 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_core_module__ = __webpack_require__("../../../../../src/app/core/core.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__directory_directory_component__ = __webpack_require__("../../../../../src/app/directory/directory.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_infinite_scroll__ = __webpack_require__("../../../../ngx-infinite-scroll/modules/ngx-infinite-scroll.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_core_module__ = __webpack_require__("../../../../../src/app/core/core.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__directory_directory_component__ = __webpack_require__("../../../../../src/app/directory/directory.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -147,18 +149,19 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__directory_directory_component__["a" /* DirectoryComponent */]
+            __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__directory_directory_component__["a" /* DirectoryComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_5__app_routing_module__["a" /* AppRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_3__core_core_module__["a" /* CoreModule */],
-            __WEBPACK_IMPORTED_MODULE_4__shared_shared_module__["a" /* SharedModule */]
+            __WEBPACK_IMPORTED_MODULE_6__app_routing_module__["a" /* AppRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_4__core_core_module__["a" /* CoreModule */],
+            __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__["a" /* SharedModule */],
+            __WEBPACK_IMPORTED_MODULE_3_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]
         ],
         providers: [],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
@@ -282,7 +285,7 @@ var _a;
 /***/ "../../../../../src/app/directory/directory.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search\">\n  <div class=\"text-container\">  \n      <input type=\"text\" placeholder=\"search people...\"  [ngModel]=\"searchText\" (ngModelChange)=\"searchTextChanged($event)\" />\n  </div>\n</div>\n\n<div class=\"results\">\n    \n    <div class=\"row\" *ngFor=\"let person of people\">\n        <div class=\"person-record\">\n            <img src=\"{{person.imagePath}}\" />\n            <div class=\"info\">\n                <div class=\"name\">{{person.name}}</div>\n                <div class=\"age\"><label>Age:</label>{{person.age}}</div>\n                <div class=\"phone\"><label>Phone:</label>{{person.phone}}</div>\n                <div class=\"interests\">{{person.interests}}</div>\n            </div>  \n        </div>\n        <hr>\n    </div> \n\n    <div *ngIf=\"loading\">\n        loading ...\n    </div>\n</div>  \n"
+module.exports = "<div class=\"search\">\n  <div class=\"text-container\">  \n      <input type=\"text\" placeholder=\"search people...\"  [ngModel]=\"searchText\" (ngModelChange)=\"searchTextChanged($event)\" />\n  </div>\n</div>\n\n<div class=\"results\" infinite-scroll [infiniteScrollDistance]=\"6\" [infiniteScrollThrottle]=\"300\" (scrolled)=\"onScroll()\">\n    \n    <div class=\"row\" *ngFor=\"let person of people\">\n        <div class=\"person-record\">\n            <img src=\"{{person.imagePath}}\" />\n            <div class=\"info\">\n                <div class=\"name\">{{person.name}}</div>\n                <div class=\"age\"><label>Age:</label>{{person.age}}</div>\n                <div class=\"phone\"><label>Phone:</label>{{person.phone}}</div>\n                <div class=\"interests\">{{person.interests}}</div>\n            </div>  \n        </div>\n        <hr>\n    </div> \n\n    <div *ngIf=\"loading\">\n        loading ...\n    </div>\n</div>  \n"
 
 /***/ }),
 
@@ -331,12 +334,20 @@ var DirectoryComponent = (function () {
         this.people = [];
     }
     DirectoryComponent.prototype.ngOnInit = function () {
-        this.loadResults('/api/directory?skip=0');
+        this.loadResults('/api/directory');
     };
     DirectoryComponent.prototype.searchTextChanged = function (text) {
         this.searchText = text;
         this.people = [];
         this.loadResults('/api/directory/search?text=' + text + '&skip=0');
+    };
+    DirectoryComponent.prototype.onScroll = function () {
+        if (this.searchText) {
+            this.loadResults('/api/directory/search?text=' + this.searchText + '&skip=' + this.people.length);
+        }
+        else {
+            this.loadResults('/api/directory/search?text=&skip=' + this.people.length);
+        }
     };
     DirectoryComponent.prototype.loadResults = function (path) {
         var _this = this;

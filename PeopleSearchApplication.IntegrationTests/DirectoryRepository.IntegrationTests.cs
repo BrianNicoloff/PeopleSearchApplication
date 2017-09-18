@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autofac;
 using NUnit.Framework;
 using PeopleSearchApplication.Controllers.API.Directory;
@@ -53,6 +49,21 @@ namespace PeopleSearchApplication.IntegrationTests
         }
 
         [Test]
+        public void GetPeople_ReturnsOnlyTheTop25User()
+        {
+            for (var i = 1; i <= 25; i++)
+            {
+                AddPerson("Person" + i, i, i.ToString(), "image" + i, "interests " + i);
+            }
+
+            AddPerson("Anderson", 11, "111-111-1111", "image1", "interests1");
+
+            var results = _testObject.GetPeople(0);
+
+            Assert.That(results.Count(), Is.EqualTo(25));
+        }
+
+        [Test]
         public void SearchPeople_ReturnsPeopleWithNameContainingSearchText()
         {
             AddPerson("Canderson", 22, "222-222-2222", "image2", "interests3");
@@ -69,7 +80,7 @@ namespace PeopleSearchApplication.IntegrationTests
         }
 
         [Test]
-        public void SearchPeople_ReturnsAllUsersWhenSearchTextIsNull()
+        public void SearchPeople_ReturnsTop25AllUsersWhenSearchTextIsNull()
         {
             AddPerson("Canderson", 22, "222-222-2222", "image2", "interests3");
             AddPerson("Zanderson", 33, "333-333-3333", "image3", "interests2");
@@ -83,6 +94,40 @@ namespace PeopleSearchApplication.IntegrationTests
             Assert.That(results[1].Name, Is.EqualTo("Canderson"));
             Assert.That(results[2].Name, Is.EqualTo("Canzander"));
             Assert.That(results[3].Name, Is.EqualTo("Zanderson"));
+        }
+
+        [Test]
+        public void SearchPeople_ReturnsTheNext25UsersWhenSearchTextIsNull()
+        {
+            for (var i = 1; i <= 50; i++)
+            {
+                AddPerson("Person" + i, i, i.ToString(), "image" + i, "interests " + i);
+            }
+            var results = _testObject.SearchPeople(null, 25);
+
+            Assert.That(results.Count(), Is.EqualTo(25));
+            Assert.That(results.First().Name, Is.EqualTo("Person32"));
+            Assert.That(results.Last().Name, Is.EqualTo("Person9"));
+        }
+
+        [Test]
+        public void SearchPeople_SkipsUsersAndTakes25()
+        {
+            for (var i = 1; i <= 50; i++)
+            {
+                AddPerson("Person" + i, i, i.ToString(), "image" + i, "interests " + i);
+            }
+
+            var results = _testObject.SearchPeople("person", 25);
+
+            foreach (var result in results)
+            {
+                Console.WriteLine(result.Name);
+            }
+
+            Assert.That(results.Count, Is.EqualTo(25));
+            Assert.That(results.First().Name, Is.EqualTo("Person32"));
+            Assert.That(results.Last().Name, Is.EqualTo("Person9"));
         }
 
         private void AddPerson(string name, int age, string phone, string imagePath, string interests)

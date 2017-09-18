@@ -15,9 +15,9 @@ namespace PeopleSearchApplication.Controllers.API.Directory
         }
 
         [HttpGet]
-        public IEnumerable<Person> Get(int skip)
+        public IEnumerable<Person> Get()
         {
-            var dataPeople = _directoryRepository.GetPeople(skip).ToList();
+            var dataPeople = _directoryRepository.GetPeople(0).ToList();
             return dataPeople.ConvertAll<Person>(p => new Person
             {
                 Id = p.Id,
