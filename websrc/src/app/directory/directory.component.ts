@@ -11,6 +11,7 @@ export class DirectoryComponent implements OnInit {
   people: Array<Person>;
   loading: boolean;
   searchText: string;
+
   constructor(private http: HttpService) {
     this.people = [];
    }

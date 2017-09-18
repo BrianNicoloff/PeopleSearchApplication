@@ -19,6 +19,9 @@
         <hr>
     </div> 
 
+    <div *ngIf="!loading && people.length===0">
+        NO RESULTS
+    </div>
     <div *ngIf="loading">
         loading ...
     </div>
