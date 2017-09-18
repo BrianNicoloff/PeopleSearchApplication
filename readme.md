@@ -9,15 +9,11 @@
 - Typescript for VS 2.2.1.0
 - SQL Server or SQL Server Express
 
-### Create Database
-
-- Run /DbScripts/CreateDB.sql
-
 ### Seed Data
 
 - Run /DbScripts/SeedData.sql
 
--- 
-
 ### Simulate Slow Connection
+
+- Open Web.Config in the PeopleSearchApplication project and uncomment the <add key="SimulateSlowNetwork" value="true"/> line
 
