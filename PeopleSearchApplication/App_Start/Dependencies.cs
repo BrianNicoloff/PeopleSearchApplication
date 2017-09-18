@@ -2,7 +2,7 @@
 using System.Reflection;
 using Autofac;
 using Autofac.Integration.WebApi;
-using PeopleSearchApplication.Data;
+using PeopleSearchData;
 
 namespace PeopleSearchApplication
 {

@@ -129,8 +129,6 @@
     <Compile Include="Controllers\API\Directory\DirectoryRepository.cs" />
     <Compile Include="Controllers\API\Directory\Person.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Data\PeopleSearchContext.cs" />
-    <Compile Include="Data\Person.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -150,6 +148,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\App\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PeopleSearchData\PeopleSearchData.csproj">
+      <Project>{ab12592f-0c1f-44d7-b397-754fbe54e45c}</Project>
+      <Name>PeopleSearchData</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

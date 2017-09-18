@@ -4,7 +4,7 @@ using Autofac;
 using Moq;
 using NUnit.Framework;
 using PeopleSearchApplication.Controllers.API.Directory;
-using PeopleSearchApplication.Data;
+using Data = PeopleSearchData;
 
 namespace PeopleSearchApplication.UnitTests
 {

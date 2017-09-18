@@ -80,6 +80,10 @@
       <Project>{D24D6CC8-2A3C-4C2A-8813-C28E868A122A}</Project>
       <Name>PeopleSearchApplication</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PeopleSearchData\PeopleSearchData.csproj">
+      <Project>{AB12592F-0C1F-44D7-B397-754FBE54E45C}</Project>
+      <Name>PeopleSearchData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

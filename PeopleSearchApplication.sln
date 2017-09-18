@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9B37A64B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearchApplication.IntegrationTests", "PeopleSearchApplication.IntegrationTests\PeopleSearchApplication.IntegrationTests.csproj", "{E1A7A26D-9CC1-4549-BAB6-FD4EFEA75505}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSeeder", "DatabaseSeeder\DatabaseSeeder.csproj", "{136068D4-97B6-4F94-9815-D7A881913131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearchData", "PeopleSearchData\PeopleSearchData.csproj", "{AB12592F-0C1F-44D7-B397-754FBE54E45C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,14 @@ Global
 		{E1A7A26D-9CC1-4549-BAB6-FD4EFEA75505}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1A7A26D-9CC1-4549-BAB6-FD4EFEA75505}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1A7A26D-9CC1-4549-BAB6-FD4EFEA75505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{136068D4-97B6-4F94-9815-D7A881913131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136068D4-97B6-4F94-9815-D7A881913131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136068D4-97B6-4F94-9815-D7A881913131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136068D4-97B6-4F94-9815-D7A881913131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB12592F-0C1F-44D7-B397-754FBE54E45C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB12592F-0C1F-44D7-B397-754FBE54E45C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB12592F-0C1F-44D7-B397-754FBE54E45C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB12592F-0C1F-44D7-B397-754FBE54E45C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

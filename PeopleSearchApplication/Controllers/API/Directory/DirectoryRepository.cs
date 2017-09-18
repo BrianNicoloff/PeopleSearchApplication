@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using PeopleSearchApplication.Data;
+using PeopleSearchData;
+using Data = PeopleSearchData;
 
 namespace PeopleSearchApplication.Controllers.API.Directory
 {
@@ -15,7 +16,7 @@ namespace PeopleSearchApplication.Controllers.API.Directory
         private readonly PeopleSearchContext _context;
         private const int Take = 25;
 
-        public DirectoryRepository(PeopleSearchContext context)
+        public DirectoryRepository(Data.PeopleSearchContext context)
         {
             _context = context;
         }

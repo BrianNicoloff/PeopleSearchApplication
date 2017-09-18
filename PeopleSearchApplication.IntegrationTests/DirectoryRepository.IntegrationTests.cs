@@ -4,7 +4,8 @@ using System.Linq;
 using Autofac;
 using NUnit.Framework;
 using PeopleSearchApplication.Controllers.API.Directory;
-using PeopleSearchApplication.Data;
+using PeopleSearchData;
+using Data = PeopleSearchData;
 
 namespace PeopleSearchApplication.IntegrationTests
 {

@@ -11,7 +11,18 @@
 
 ### Seed Data
 
-- Run /DbScripts/SeedData.sql
+- Run the DatabaseSeeder project in the solution
+
+### Run Javascript Unit Tests
+
+- cd webroot
+- npm run test 
+  or
+  npm run test:watch
+
+### Run NUnit Tests
+
+- Run the NUnit Tests with VS.NET and/or Resharper pluggin
 
 ### Simulate Slow Connection
 
