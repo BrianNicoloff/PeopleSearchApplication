@@ -9,20 +9,31 @@
 - Typescript for VS 2.2.1.0
 - SQL Server or SQL Server Express
 
+### Installation and How To Run 
+
+- git clone https://github.com/BrianNicoloff/PeopleSearchApplication.git
+- cd PeopleSearchApplication\webroot
+- npm install
+- Open PeopleSearchApplication\PeopleSearchApplication.sln
+- Rebuild Solution
+- Run/Debug the DatabaseSeeder.csproj in VS.NET
+- F5 (Run/Debug) the PeopleSearchApplication.csproj
+
 ### Seed Data
 
 - Run the DatabaseSeeder project in the solution
 
 ### Run Javascript Unit Tests
 
-- cd webroot
+- cd PeopleSearchApplication/webroot
 - npm run test 
   or
   npm run test:watch
 
 ### Run NUnit Tests
 
-- Run the NUnit Tests with VS.NET and/or Resharper pluggin
+There is a VS.NET Tests folder with a Database Integration Tests project and a Unit Test project
+- Run the NUnit Tests with VS.NET and/or Resharper Test Runner pluggin
 
 ### Simulate Slow Connection
 
