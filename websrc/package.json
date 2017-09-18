@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "buildAndDeployToMvcApp": "npm run build && npm run copyDistToProj && npm run transformIndexAndMove",
-    "build": "npm install && ng build",
+    "build": "ng build",
     "copyDistToProj": "xcopy \"dist\" \"..\\PeopleSearchApplication\\Scripts\\App\" /i /s /r /y /c",
     "transformIndexAndMove": "node transform-and-move-index.js",
     "test": "ng test --single-run",
