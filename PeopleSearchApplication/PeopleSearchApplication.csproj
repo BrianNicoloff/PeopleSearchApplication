@@ -129,6 +129,7 @@
     <Compile Include="Controllers\API\Directory\DirectoryRepository.cs" />
     <Compile Include="Controllers\API\Directory\Person.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\PeopleSearchContext.cs" />
     <Compile Include="Data\Person.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

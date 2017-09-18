@@ -1,6 +1,8 @@
-﻿using System.Reflection;
+﻿using System.Configuration;
+using System.Reflection;
 using Autofac;
 using Autofac.Integration.WebApi;
+using PeopleSearchApplication.Data;
 
 namespace PeopleSearchApplication
 {
@@ -14,6 +16,7 @@ namespace PeopleSearchApplication
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            builder.Register(c => new PeopleSearchContext(ConfigurationManager.ConnectionStrings["PeopleSearchApplication"].ConnectionString)).InstancePerLifetimeScope();
         }
     }
 }

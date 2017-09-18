@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearchApplication.Uni
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9B37A64B-C730-4B90-AE81-0A4A9823C4BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearchApplication.IntegrationTests", "PeopleSearchApplication.IntegrationTests\PeopleSearchApplication.IntegrationTests.csproj", "{E1A7A26D-9CC1-4549-BAB6-FD4EFEA75505}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,11 +34,16 @@ Global
 		{820B8818-6DFB-44F2-9595-607B3C074129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{820B8818-6DFB-44F2-9595-607B3C074129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{820B8818-6DFB-44F2-9595-607B3C074129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1A7A26D-9CC1-4549-BAB6-FD4EFEA75505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1A7A26D-9CC1-4549-BAB6-FD4EFEA75505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1A7A26D-9CC1-4549-BAB6-FD4EFEA75505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1A7A26D-9CC1-4549-BAB6-FD4EFEA75505}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{820B8818-6DFB-44F2-9595-607B3C074129} = {9B37A64B-C730-4B90-AE81-0A4A9823C4BC}
+		{E1A7A26D-9CC1-4549-BAB6-FD4EFEA75505} = {9B37A64B-C730-4B90-AE81-0A4A9823C4BC}
 	EndGlobalSection
 EndGlobal

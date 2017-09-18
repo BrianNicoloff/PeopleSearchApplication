@@ -18,6 +18,7 @@ namespace PeopleSearchApplication.Controllers.API.Directory
             var dataPeople = _directoryRepository.GetPeople(skip).ToList();
             return dataPeople.ConvertAll<Person>(p => new Person
             {
+                Id = p.Id,
                 Name = p.Name,
                 Age = p.Age,
                 Phone = p.Phone,

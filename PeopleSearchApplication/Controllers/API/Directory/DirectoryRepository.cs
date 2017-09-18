@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PeopleSearchApplication.Data;
 
 namespace PeopleSearchApplication.Controllers.API.Directory
 {
@@ -13,9 +11,18 @@ namespace PeopleSearchApplication.Controllers.API.Directory
 
     public class DirectoryRepository : IDirectoryRepository
     {
+        private readonly PeopleSearchContext _context;
+
+        public DirectoryRepository(PeopleSearchContext context)
+        {
+            _context = context;
+        }
+
         public IList<Data.Person> GetPeople(int skip)
         {
-            throw new NotImplementedException();
+            return _context.People
+                    .OrderBy(p => p.Name)
+                    .ToList();
         }
     }
 }
