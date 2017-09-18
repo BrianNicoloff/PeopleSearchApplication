@@ -1,6 +1,6 @@
 <div class="search">
   <div class="text-container">  
-      <input type="text" placeholder="search people..." />
+      <input type="text" placeholder="search people..."  [ngModel]="searchText" (ngModelChange)="searchTextChanged($event)" />
   </div>
 </div>
 

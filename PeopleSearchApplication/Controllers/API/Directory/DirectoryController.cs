@@ -26,5 +26,10 @@ namespace PeopleSearchApplication.Controllers.API.Directory
                 ImagePath = p.ImagePath
             });
         }
+
+        public IEnumerable<Person> Search(string text, int skip)
+        {
+            return new List<Person>();
+        }
     }
 }

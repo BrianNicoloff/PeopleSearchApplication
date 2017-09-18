@@ -10,23 +10,32 @@ import 'rxjs/add/operator/finally';
 export class DirectoryComponent implements OnInit {
   people: Array<Person>;
   loading: boolean;
+  searchText: string;
   constructor(private http: HttpService) {
     this.people = [];
    }
 
   ngOnInit() {
+    this.loadResults('/api/directory?skip=0');
+  }
+  
+  searchTextChanged(text: string) {
+    this.searchText = text;
+    this.people = [];
+    this.loadResults('/api/directory/search?text=' + text + '&skip=0');
+  }
+
+  private loadResults(path: string) {
     this.loading = true;
-    this.http.get<Array<Person>>('/api/directory?skip=0')
+    this.http.get<Array<Person>>(path)
       .finally(() => {
         this.loading = false;
       })  
       .subscribe((results) => {
-        // if (results) {
           results.forEach((person: Person) => {
             this.people.push(person);
           });  
-        // }
       });
   }
-  
+
 }

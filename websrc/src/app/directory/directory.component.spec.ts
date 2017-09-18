@@ -9,13 +9,16 @@ import { Person } from "./person";
 describe('DirectoryComponent', () => {
     let testObject: DirectoryComponent;
     let mockHttp: any;  
+
+    beforeEach(() => {
+        mockHttp = { get: sinon.stub() };
+        testObject = new DirectoryComponent(mockHttp);
+
+        mockHttp.get.returns(Observable.of([]));
+    });
+
     describe('init', () => {
         
-        beforeEach(() => {
-            mockHttp = { get: sinon.stub() };
-            testObject = new DirectoryComponent(mockHttp);
-        });
-
         it('should get records from api', () => {
             let people = <Array<Person>>[
                 {
@@ -52,11 +55,11 @@ describe('DirectoryComponent', () => {
                         
             testObject.ngOnInit();
 
-            expect(testObject.people).toBe([]);
+            expect(testObject.people).toEqual([]);
         });
 
         it('shows loading spinner while retrieving records', (done) => {
-            let people = <Array<Person>>[
+            let people: Array<Person> = [
                 {
                     name: 'Brian',
                     age: 38,
@@ -65,20 +68,68 @@ describe('DirectoryComponent', () => {
                     interests: 'soccer & music'
                 }
             ];
-            
-             mockHttp.get
-                .withArgs('/api/directory?skip=0')
-                .returns(Observable.of(people).delay(1000));
 
-             testObject.ngOnInit();
+            mockHttp.get
+                .withArgs('/api/directory?skip=0')
+                .returns(Observable.of(people).delay(500));
+ 
+            testObject.ngOnInit();
             
-             expect(testObject.loading).toBeTruthy();
+            expect(testObject.loading).toBeTruthy();
+            setTimeout(() => {
+                expect(testObject.loading).toBeFalsy();
+                done();
+            }, 1000);
+        });
+    });
+
+    describe('searchTextChanged', () => {
+
+        it('should retrieve search results from api when text changes', () => {
             
-             setTimeout(() => {
-                 expect(testObject.loading).toBeFalsy();
-                 done();
-             }, 3000);
+            let people: Array<Person> = [
+                {
+                    name: 'abe lincoln',
+                    age: 160,
+                    phone: '186 - 418 - 6418',
+                    interests: 'politics',
+                    imagePath: '/images/abe.jpg'
+                }
+            ];
+
+            mockHttp.get
+                .withArgs('/api/directory/search?text=abe&skip=0')
+                .returns(Observable.of(people));
+            
+            testObject.searchTextChanged('abe');
+
+            expect(testObject.searchText).toBe('abe');
+            expect(testObject.people).toEqual(people);
         });
 
+        it('handles no results', () => {
+            let people = [];
+            mockHttp.get
+                .withArgs('/api/directory/search?text=def&skip=0')
+                .returns(Observable.of(people));
+                        
+            testObject.searchTextChanged('def');
+            
+            expect(testObject.people).toEqual([]);
+        });
+
+        it('shows loading spinner while retrieving records', (done) => {
+            mockHttp.get
+                .withArgs('/api/directory/search?text=xyz&skip=0')
+                .returns(Observable.of([]).delay(500));
+ 
+              testObject.searchTextChanged('xyz');
+            
+            expect(testObject.loading).toBeTruthy();
+            setTimeout(() => {
+                expect(testObject.loading).toBeFalsy();
+                done();
+            }, 1000);
+        });
     });
 });
