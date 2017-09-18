@@ -7,6 +7,7 @@ namespace PeopleSearchApplication.Controllers.API.Directory
     public interface IDirectoryRepository
     {
         IList<Data.Person> GetPeople(int skip);
+        IList<Data.Person> SearchPeople(string searchText, int skip);
     }
 
     public class DirectoryRepository : IDirectoryRepository
@@ -23,6 +24,17 @@ namespace PeopleSearchApplication.Controllers.API.Directory
             return _context.People
                     .OrderBy(p => p.Name)
                     .ToList();
+        }
+
+        public IList<Data.Person> SearchPeople(string searchText, int skip)
+        {
+            if (searchText == null)
+                return GetPeople(skip);
+
+            return _context.People
+                .Where(p => p.Name.Contains(searchText))
+                .OrderBy(p => p.Name)
+                .ToList();
         }
     }
 }
