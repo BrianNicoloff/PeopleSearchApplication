@@ -12,7 +12,7 @@
 ### Installation and How To Run 
 
 - git clone https://github.com/BrianNicoloff/PeopleSearchApplication.git
-- cd PeopleSearchApplication\webroot
+- cd PeopleSearchApplication\websrc
 - npm install
 - Open PeopleSearchApplication\PeopleSearchApplication.sln
 - Rebuild Solution
